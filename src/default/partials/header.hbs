@@ -21,11 +21,11 @@
                         <a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
                         <div class="tsd-filter-group">
                             <div class="tsd-select" id="tsd-filter-visibility">
-                                <span class="tsd-select-label">All</span>
+                                <span class="tsd-select-label">Public</span>
                                 <ul class="tsd-select-list">
-                                    <li data-value="public">Public</li>
+                                    <li data-value="public" class="selected">Public</li>
                                     <li data-value="protected">Public/Protected</li>
-                                    <li data-value="private" class="selected">All</li>
+                                    <li data-value="private">All</li>
                                 </ul>
                             </div>
 
@@ -38,7 +38,7 @@
                             {{/unless}}
 
                             {{#unless settings.excludeNotExported}}
-                                <input type="checkbox" id="tsd-filter-only-exported" />
+                                <input type="checkbox" id="tsd-filter-only-exported" checked />
                                 <label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
                             {{/unless}}
                         </div>

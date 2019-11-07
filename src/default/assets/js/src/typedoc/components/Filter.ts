@@ -139,10 +139,10 @@ namespace typedoc
         constructor(options?:Backbone.ViewOptions<any>) {
             super(options);
 
-            this.optionVisibility   = new FilterItemSelect('visibility',      'private');
+            this.optionVisibility   = new FilterItemSelect('visibility',      'public');
             this.optionInherited    = new FilterItemCheckbox('inherited',     true);
             this.optionExternals    = new FilterItemCheckbox('externals',     true);
-            this.optionOnlyExported = new FilterItemCheckbox('only-exported', false);
+            this.optionOnlyExported = new FilterItemCheckbox('only-exported', true);
         }
 
 
