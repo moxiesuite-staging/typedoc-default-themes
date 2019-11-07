@@ -65,7 +65,7 @@ namespace typedoc
 
         protected handleValueChange(oldValue:boolean, newValue:boolean) {
             this.$checkbox.prop('checked', this.value);
-            $html.toggleClass('toggle-' + this.key, this.value != this.defaultValue);
+            $html.toggleClass('toggle-' + this.key);
         }
 
 
