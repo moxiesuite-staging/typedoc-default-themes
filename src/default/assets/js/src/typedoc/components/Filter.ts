@@ -16,13 +16,16 @@ namespace typedoc
 
         constructor(key:string, value:T) {
             this.key = key;
-            this.value = value;
+            this.value = value; //I'd delete this, but I can't
             this.defaultValue = value;
 
             this.initialize();
 
             if (window.localStorage[this.key]) {
                 this.setValue(this.fromLocalStorage(window.localStorage[this.key]));
+            }
+            else {
+                this.setValue(this.value);
             }
         }
 
@@ -38,8 +41,6 @@ namespace typedoc
 
 
         protected setValue(value:T) {
-            if (this.value == value) return;
-
             var oldValue = this.value;
             this.value = value;
             window.localStorage[this.key] = this.toLocalStorage(value);
@@ -150,6 +151,7 @@ namespace typedoc
             try {
                 return typeof window.localStorage != 'undefined';
             } catch (e) {
+                console.log("no local storage");
                 return false;
             }
         }
