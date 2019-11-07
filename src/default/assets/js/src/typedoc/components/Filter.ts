@@ -16,13 +16,16 @@ namespace typedoc
 
         constructor(key:string, value:T) {
             this.key = key;
-            this.value = value;
+            this.value = value; //I'd delete this, but I can't
             this.defaultValue = value;
 
             this.initialize();
 
             if (window.localStorage[this.key]) {
                 this.setValue(this.fromLocalStorage(window.localStorage[this.key]));
+            }
+            else {
+                this.setValue(this.value);
             }
         }
 
@@ -38,8 +41,6 @@ namespace typedoc
 
 
         protected setValue(value:T) {
-            if (this.value == value) return;
-
             var oldValue = this.value;
             this.value = value;
             window.localStorage[this.key] = this.toLocalStorage(value);
@@ -64,7 +65,7 @@ namespace typedoc
 
         protected handleValueChange(oldValue:boolean, newValue:boolean) {
             this.$checkbox.prop('checked', this.value);
-            $html.toggleClass('toggle-' + this.key, this.value != this.defaultValue);
+            $html.toggleClass('toggle-' + this.key);
         }
 
 
@@ -139,10 +140,10 @@ namespace typedoc
         constructor(options?:Backbone.ViewOptions<any>) {
             super(options);
 
-            this.optionVisibility   = new FilterItemSelect('visibility',      'private');
+            this.optionVisibility   = new FilterItemSelect('visibility',      'public');
             this.optionInherited    = new FilterItemCheckbox('inherited',     true);
             this.optionExternals    = new FilterItemCheckbox('externals',     true);
-            this.optionOnlyExported = new FilterItemCheckbox('only-exported', false);
+            this.optionOnlyExported = new FilterItemCheckbox('only-exported', true);
         }
 
 
@@ -150,6 +151,7 @@ namespace typedoc
             try {
                 return typeof window.localStorage != 'undefined';
             } catch (e) {
+                console.log("no local storage");
                 return false;
             }
         }
