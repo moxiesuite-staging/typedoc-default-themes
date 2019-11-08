@@ -1,5 +1,5 @@
 {
-  "name": "typedoc-default-themes",
+  "name": "@trufflesuite/typedoc-default-themes",
   "description": "Default themes for TypeDoc.",
   "version": "0.6.0",
   "homepage": "https://typedoc.org/",
