@@ -1,3 +1,4 @@
+//This file has been modified by Truffle
 /// <reference types='jquery' />
 /// <reference types='backbone' />
 /// <reference path='../Application.ts' />

@@ -3,6 +3,13 @@
 This module contains the default themes of TypeDoc.
 Visit https://typedoc.org/ to learn more about TypeDoc.
 
+## Modifications
+
+This repository has been modified by Truffle to cause the
+default theme to default to only showing exported objects
+and only showing public objects.  This file has been modified
+to include this notice.
+
 
 ## Contributing
 
