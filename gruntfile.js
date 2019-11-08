@@ -20,12 +20,12 @@ module.exports = function(grunt)
                     mangle: false
                 },
                 files: {
-                    'bin/default-public/assets/js/main.js': [
+                    'bin/default/assets/js/main.js': [
                         'node_modules/jquery/dist/jquery.min.js',
                         'node_modules/underscore/underscore-min.js',
                         'node_modules/backbone/backbone-min.js',
                         'node_modules/lunr/lunr.min.js',
-                        'src/default-public/assets/js/main.js'
+                        'src/default/assets/js/main.js'
                     ]
                 }
             }
@@ -39,11 +39,11 @@ module.exports = function(grunt)
                     replacements: [{
                         pattern: /{{ CSS }}/g,
                         replacement: function() {
-                            var css = grunt.file.read('bin/default-public/assets/css/main.css');
+                            var css = grunt.file.read('bin/default/assets/css/main.css');
                             return css.replace(/url\(([^\)]*)\)/g, function(match, file) {
                                 if (match.indexOf(':') != -1) return match;
                                 var path = require('path'), fs = require('fs');
-                                var file = path.resolve('bin/default-public/assets/css', file);
+                                var file = path.resolve('bin/default/assets/css', file);
                                 var data = fs.readFileSync(file, 'base64');
                                 return 'url(data:image/png;base64,' + data + ')';
                             });
@@ -51,7 +51,7 @@ module.exports = function(grunt)
                     }, {
                         pattern: /{{ JS }}/g,
                         replacement: function() {
-                            return grunt.file.read('bin/default-public/assets/js/main.js').replace('{{', '{/**/{');
+                            return grunt.file.read('bin/default/assets/js/main.js').replace('{{', '{/**/{');
                         }
                     }]
                 }
@@ -66,9 +66,9 @@ module.exports = function(grunt)
             themeDefault: {
                 files: [{
                     expand: true,
-                    cwd: 'src/default-public/assets/css',
+                    cwd: 'src/default/assets/css',
                     src: '**/*.sass',
-                    dest: 'bin/default-public/assets/css',
+                    dest: 'bin/default/assets/css',
                     ext: '.css'
                 }]
             }
@@ -95,15 +95,15 @@ module.exports = function(grunt)
             themeDefault: {
                 files: [{
                     expand: true,
-                    cwd: 'src/default-public',
+                    cwd: 'src/default',
                     src: ['**/*.hbs', '**/*.png'],
-                    dest: 'bin/default-public'
+                    dest: 'bin/default'
                 }]
             },
             themeDefault2Minimal: {
                 files: [{
                     expand: true,
-                    cwd: 'src/default-public/partials',
+                    cwd: 'src/default/partials',
                     src: ['**/*.hbs'],
                     dest: 'bin/minimal/partials'
                 }]
@@ -119,15 +119,15 @@ module.exports = function(grunt)
         },
         watch: {
             js: {
-                files: ['src/default-public/assets/js/src/**/*.ts'],
+                files: ['src/default/assets/js/src/**/*.ts'],
                 tasks: ['js']
             },
             css: {
-                files: ['src/default-public/assets/css/**/*'],
+                files: ['src/default/assets/css/**/*'],
                 tasks: ['css']
             },
             default: {
-                files: ['src/default-public/**/*.hbs'],
+                files: ['src/default/**/*.hbs'],
                 tasks: ['copy', 'string-replace']
             },
             minimal: {
