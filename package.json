@@ -55,5 +55,6 @@
     "typescript",
     "documentation",
     "generator"
-  ]
+  ],
+  "access": "public"
 }
